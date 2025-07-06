@@ -3,11 +3,11 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - main   # or your deployment branch
+      - main # or your deployment branch
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted # Use self-hosted runner on Amazon Linux
 
     steps:
       - name: Checkout Code
@@ -34,4 +34,3 @@ jobs:
             pm2 start app.js --name node-app || pm2 restart node-app
             pm2 save
           EOF
-
